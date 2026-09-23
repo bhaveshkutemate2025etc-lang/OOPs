@@ -1,0 +1,72 @@
+#include<iostream>
+using namespace std;
+
+class student
+{
+    int Roll_no;
+    float percentage;
+    char grade;
+
+public:
+    // 1. DEFAULT CONSTRUCTOR
+    student()
+    {
+        Roll_no = 0;
+        percentage = 0.0;
+        grade = 'N'; 
+    }
+
+    // 2. PARAMETERIZED CONSTRUCTOR
+    student(int r, float p, char g)
+    {
+        Roll_no = r;
+        percentage = p;
+        grade = g;
+    }
+
+    // 3. COPY CONSTRUCTOR
+    student(const student &old_student)
+    {
+        Roll_no = old_student.Roll_no;
+        percentage = old_student.percentage;
+        grade = old_student.grade;
+    }
+
+    void accept()
+    {
+        cout<<"Enter your Roll_number: ";
+        cin>>Roll_no;
+        cout<<"Enter your percentage: ";
+        cin>>percentage;
+        cout<<"Enter your grade: ";
+        cin>>grade;
+    }
+
+    void display()
+    {
+        cout<<"Roll_number "<<Roll_no<<endl;
+        cout<<"Percentage "<<percentage<<endl;
+        cout<<"Grade "<<grade<<endl;
+    }
+};
+
+int main()
+{
+    // Object s1 calls the Default Constructor automatically
+    student s1;
+    s1.accept();
+    cout<<"\nStudent 1 (From Default + User Input):"<<endl;
+    s1.display();
+
+    // Object s2 calls the Parameterized Constructor explicitly
+    cout<<"\nStudent 2 (From Parameterized Constructor):"<<endl;
+    student s2(101, 89.5, 'A');
+    s2.display();
+
+    // Object s3 calls the Copy Constructor to clone s2
+    cout<<"\nStudent 3 (From Copy Constructor, clones Student 2):"<<endl;
+    student s3 = s2;
+    s3.display();
+
+    return 0;
+}
